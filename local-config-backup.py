@@ -18,4 +18,4 @@ alog(resultMessage)
 outFileName = scriptArgs[ "outfile" ]
 
 with open(outFileName, "w") as outfile:
-	json.dump(resultMessage[1], outfile)
+	json.dump(resultMessage, outfile)
