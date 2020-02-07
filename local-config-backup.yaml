@@ -1,5 +1,5 @@
-name: local-config-backup
+name : local-config-backup
 
 args:
-	
-  outfile: /tmp/local-config-backup.out
+
+  outfile : /tmp/local-config-backup.out
