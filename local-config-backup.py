@@ -2,6 +2,7 @@
 from cvplibrary import CVPGlobalVariables,GlobalVariableNames,Device
 from cvplibrary.auditlogger import alog
 import json
+from datetime import datetime
 
 ip = CVPGlobalVariables.getValue(GlobalVariableNames.CVP_IP)
 serial = CVPGlobalVariables.getValue(GlobalVariableNames.CVP_SERIAL)
@@ -11,7 +12,8 @@ message = "Running copy running-config to backup-config on device with serial %s
 alog(message)
 
 switch = Device(ip)
-result = switch.runCmds(["enable", "copy running-config backup-config"])
+fileName = "backup-config-%s" % ( datetime.strftime('%Y%m%d%H%M%S') )
+result = switch.runCmds(["enable", "copy running-config " + fileName])
 resultMessage = result[1]["response"]["messages"]
 alog(resultMessage)
 
