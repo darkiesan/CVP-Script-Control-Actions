@@ -12,10 +12,10 @@ alog(message)
 
 switch = Device(ip)
 result = switch.runCmds(["enable", "copy running-config backup-config"])
-resultMessage = result[1]["response"]["message"]
+resultMessage = result[1]["response"]
 alog(resultMessage)
 
 outFileName = scriptArgs[ "outfile" ]
 
 with open(outFileName, "w") as outfile:
-	json.dump(resiltMessage[1], outfile)
+	json.dump(resultMessage[1], outfile)
