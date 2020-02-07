@@ -1,6 +1,7 @@
 
 from cvplibrary import CVPGlobalVariables,GlobalVariableNames,Device
 from cvplibrary.auditlogger import alog
+import json
 
 ip = CVPGlobalVariables.getValue(GlobalVariableNames.CVP_IP)
 serial = CVPGlobalVariables.getValue(GlobalVariableNames.CVP_SERIAL)
@@ -14,3 +15,7 @@ result = switch.runCmds(["enable", "copy running-config backup-config"])
 resultMessage = result[1]["response"]["message"]
 alog(resultMessage)
 
+outFileName = scriptArgs[ "outfile" ]
+
+with open(outFileName, "w") as outfile:
+	json.dump(resiltMessage[1], outfile)
